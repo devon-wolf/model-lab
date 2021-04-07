@@ -12,10 +12,10 @@ const testUser1 = {
 const testUser2 = {
   username: 'meddler',
   email: 'in@your.business',
-  isContributor: false
+  isContributor: true
 };
 
-describe('model-lab routes', () => {
+describe('user routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
@@ -105,4 +105,37 @@ describe('model-lab routes', () => {
       ...testUser1
     }]);
   });
+});
+
+const testContrib = {
+  userID: '1',
+  pseudonym: 'do_you_believe'
+}
+
+describe('contributor routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+
+  // beforeEach(async () => {
+  //   await request(app)
+  //     .post('/api/v1/contributors')
+  //     .send(testContrib);
+  // });
+
+  it('creates a new contributor', async () => {
+    const newContrib = {
+      userID: '2',
+      pseudonym: 'meddlesome_meddler'
+    };
+
+    const response = await request(app)
+      .post('/api/v1/contributors')
+      .send(newContrib);
+
+    expect(response.body).toEqual({
+      id: '1',
+      ...newContrib
+    })
+  })
 });
