@@ -68,4 +68,12 @@ module.exports = class User {
 
 		return new User(rows[0]);
 	}
+
+	static async delete(id : string) {
+		const { rows } = await pool.query(`
+		DELETE FROM users WHERE id=$1
+		RETURNING *`, [id]);
+
+		return new User(rows[0]);
+	}
 }
