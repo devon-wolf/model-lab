@@ -127,11 +127,11 @@ describe('contributor routes', () => {
       .send(testUser2);
   });
 
-  // beforeEach(async () => {
-  //   await request(app)
-  //     .post('/api/v1/contributors')
-  //     .send(testContrib);
-  // });
+  beforeEach(async () => {
+    await request(app)
+      .post('/api/v1/contributors')
+      .send(testContrib);
+  });
 
   it('creates a new contributor', async () => {
     const newContrib = {
@@ -144,7 +144,7 @@ describe('contributor routes', () => {
       .send(newContrib);
 
     expect(response.body).toEqual({
-      id: '1',
+      id: '2',
       ...newContrib
     })
   })
