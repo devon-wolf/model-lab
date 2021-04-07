@@ -23,7 +23,7 @@ module.exports = class User {
 
 	static async insert({ username, email, isContributor } : UserRequest) {
 		const { rows } = await pool.query(
-			`INSERT INTO users (username, email, isContributor)
+			`INSERT INTO users (username, email, is_contributor)
 			VALUES ($1, $2, $3)
 			RETURNING *`,
 			[

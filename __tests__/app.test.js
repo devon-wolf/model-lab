@@ -15,11 +15,11 @@ describe('model-lab routes', () => {
       isContributor: false
     };
 
-    const { body } = await request(app)
+    const response = await request(app)
       .post('/api/v1/users')
       .send(newUser);
 
-    expect(body).toEqual({
+      expect(response.body).toEqual({
       id: '1',
       ...newUser
     });
