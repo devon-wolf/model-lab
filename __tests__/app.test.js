@@ -60,4 +60,14 @@ describe('model-lab routes', () => {
       ...testUser2
     }]);
   });
+
+  it('gets a user from the database by ID', async () => {
+    const response = await request(app)
+      .get('/api/v1/users/2');
+
+    expect(response.body).toEqual({
+      id: '2',
+      ...testUser2
+    });
+  });
 });
