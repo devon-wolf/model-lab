@@ -1,4 +1,4 @@
-import { UserRow } from '../../types';
+import { UserRow, UserRequest } from '../../types';
 const pool = require('../utils/pool');
 
 module.exports = class User {
@@ -19,5 +19,20 @@ module.exports = class User {
 		this.username = username;
 		this.email = email;
 		this.isContributor = is_contributor;
+	}
+
+	static async insert({ username, email, isContributor } : UserRequest) {
+		const { rows } = await pool.query(
+			`INSERT INTO users (username, email, isContributor)
+			VALUES ($1, $2, $3)
+			RETURNING *`,
+			[
+				username,
+				email,
+				isContributor
+			]
+		);
+
+		return new User(rows[0]);
 	}
 }
