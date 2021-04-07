@@ -7,11 +7,11 @@ CREATE TABLE users (
 	is_contributor BOOLEAN
 );
 
--- CREATE TABLE contributors (
--- 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
--- 	user_id BIGINT NOT NULL REFERENCES users(id),
--- 	pseudonym TEXT
--- );
+CREATE TABLE contributors (
+	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	user_id BIGINT NOT NULL REFERENCES users(id),
+	pseudonym TEXT
+);
 
 -- CREATE TABLE works (
 -- 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

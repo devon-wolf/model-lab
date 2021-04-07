@@ -10,7 +10,19 @@ export type UserRow = {
 	email: string,
 	is_contributor: boolean
 }
- export type DatabaseQuery = {
-	 rows: Array<UserRow>,
-	 [key: string]: any
- }
+
+export type ContribRequest = {
+	userID: string,
+	pseudonym?: string
+}
+
+export type ContribRow = {
+	id: string,
+	user_id: string,
+	pseudonym: string | null
+}
+
+export type DatabaseQuery = {
+	rows: Array<UserRow | ContribRow>,
+	[key: string]: any
+}

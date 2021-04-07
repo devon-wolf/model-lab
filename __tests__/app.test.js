@@ -117,6 +117,16 @@ describe('contributor routes', () => {
     return setup(pool);
   });
 
+  beforeEach(async () => {
+    await request(app)
+      .post('/api/v1/users')
+      .send(testUser1);
+    
+    await request(app)
+      .post('/api/v1/users')
+      .send(testUser2);
+  });
+
   // beforeEach(async () => {
   //   await request(app)
   //     .post('/api/v1/contributors')
