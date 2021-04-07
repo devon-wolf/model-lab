@@ -70,4 +70,21 @@ describe('model-lab routes', () => {
       ...testUser2
     });
   });
+
+  it('updates a user', async () => {
+    const updatedUser = {
+      username: 'actually_cher',
+      email: 'cher@cher.com',
+      isContributor: true
+    }
+
+    const response = await request(app)
+      .put('/api/v1/users/1')
+      .send(updatedUser);
+
+    expect(response.body).toEqual({
+      id: '1',
+      ...updatedUser
+    });
+  })
 });
