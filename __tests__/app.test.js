@@ -86,5 +86,23 @@ describe('model-lab routes', () => {
       id: '1',
       ...updatedUser
     });
-  })
+  });
+
+  it('deletes a user', async () => {
+    const response = await request(app)
+      .delete('/api/v1/users/2');
+
+    expect(response.body).toEqual({
+      id: '2',
+      ...testUser2
+    });
+
+    const followUpFetch = await request(app)
+      .get('/api/v1/users');
+
+    expect(followUpFetch.body).toEqual([{
+      id: '1',
+      ...testUser1
+    }]);
+  });
 });
