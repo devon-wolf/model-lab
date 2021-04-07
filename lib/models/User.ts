@@ -1,4 +1,4 @@
-import { UserRow, UserRequest } from '../../types';
+import { UserRow, UserRequest, DatabaseQuery } from '../../types';
 const pool = require('../utils/pool');
 
 module.exports = class User {
@@ -34,5 +34,13 @@ module.exports = class User {
 		);
 
 		return new User(rows[0]);
+	}
+
+	static async select() {
+		const { rows } = await pool.query('SELECT * FROM users');
+
+		const users = rows.map((row : UserRow) => new User(row));
+
+		return users;
 	}
 }

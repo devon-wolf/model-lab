@@ -10,3 +10,7 @@ export type UserRow = {
 	email: string,
 	is_contributor: boolean
 }
+ export type DatabaseQuery = {
+	 rows: Array<UserRow>,
+	 [key: string]: any
+ }
