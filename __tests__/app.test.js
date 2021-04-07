@@ -12,7 +12,7 @@ describe('model-lab routes', () => {
     const newUser = {
       username: 'hungrylikethewolf',
       email: 'hungry@like.wolf',
-      contributor: false
+      isContributor: false
     };
 
     const { body } = await request(app)

@@ -4,7 +4,7 @@ CREATE TABLE users (
 	id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	username TEXT NOT NULL,
 	email TEXT NOT NULL,
-	contributor BOOLEAN,
+	is_contributor BOOLEAN,
 );
 
 CREATE TABLE contributors (
