@@ -49,4 +49,23 @@ module.exports = class User {
 
 		return new User(rows[0]);
 	}
+
+	static async update({ id, username, email, isContributor } : User) {
+		const { rows } = await pool.query(
+			`UPDATE users
+			SET username=$1,
+			email=$2,
+			is_contributor=$3
+			WHERE id=$4
+			RETURNING *`,
+			[
+				username,
+				email,
+				isContributor,
+				id
+			]
+		);
+
+		return new User(rows[0]);
+	}
 }
