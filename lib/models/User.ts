@@ -43,4 +43,10 @@ module.exports = class User {
 
 		return users;
 	}
+
+	static async selectByID(id : string) {
+		const { rows } = await pool.query('SELECT * FROM users WHERE id=$1', [id]);
+
+		return new User(rows[0]);
+	}
 }
